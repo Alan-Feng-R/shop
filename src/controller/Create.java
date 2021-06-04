@@ -6,14 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 
-import java.awt.*;
 import java.util.List;
 
 public class Create {
     @FXML
-    public javafx.scene.control.TextField cname;
+    public TextField cname;
     @FXML
     public TextField name;
 
@@ -31,13 +29,18 @@ public class Create {
     public void confirm(ActionEvent actionEvent) {
         if (!cname.getText().equals(name.getText())){
             alert("ERROR", "Company input is inconsistent, please re-enter!", null, Alert.AlertType.ERROR);
+            return;
         }
         List<Company> list = new CompanyDaoImpl().findAll();
         for (Company company : list) {
             if (name.getText().equals(company.getCompanyName())){
                 alert("ERROR", "The company already exists, please re-enter!", null, Alert.AlertType.ERROR);
+                return;
             }
         }
+        new CompanyDaoImpl().insertCompany(name.getText());
+        alert("SUCCESS", "registration success!", null, Alert.AlertType.INFORMATION);
+
 
     }
 }

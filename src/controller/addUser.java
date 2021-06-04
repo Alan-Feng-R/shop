@@ -56,7 +56,6 @@ public class addUser implements Initializable {
             data.add(company.getCompanyName());
         }
         for (String datum : data) {
-            // 添加
             companyList.getItems().add(datum);
         }
     }

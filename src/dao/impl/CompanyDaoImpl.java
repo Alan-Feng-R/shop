@@ -107,5 +107,11 @@ public class CompanyDaoImpl implements CompanyDao {
         String sql = "update company set credit=? where company_name=?";
         executeUpdate(sql,credit,company);
     }
+
+    @Override
+    public void insertCompany(String companyName) {
+        String sql = "insert into company(company_name) values (?)";
+        executeUpdate(sql,companyName);
+    }
 }
 

@@ -1,7 +1,6 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
-import domain.AssetInfo;
 import domain.AssetSelling;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +24,10 @@ public class Assets implements Initializable {
     @FXML
     public TableColumn stateCol;
     @FXML
+    public TableColumn companyCol;
+    @FXML
     public TableView assettableview;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,6 +35,7 @@ public class Assets implements Initializable {
         remainCol.setCellValueFactory(new PropertyValueFactory<>("remainNum"));
         uploadCol.setCellValueFactory(new PropertyValueFactory<>("uploadTime"));
         stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
+        companyCol.setCellValueFactory(new PropertyValueFactory<>("companyName"));
 
         List<AssetSelling> list = new AssetDaoImpl().findAll();
         ObservableList<AssetSelling> data = FXCollections.observableArrayList();
@@ -40,7 +43,6 @@ public class Assets implements Initializable {
             data.add(assetSelling);
         }
         assettableview.setItems(data);
-
     }
 
 }

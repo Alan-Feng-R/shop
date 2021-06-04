@@ -12,4 +12,6 @@ public interface CompanyDao {
     Company findByName(String name);
 
     void updateCredit(String company, String credit);
+
+    void insertCompany(String companyName);
 }
