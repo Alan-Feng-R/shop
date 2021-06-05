@@ -15,6 +15,19 @@ public class AssetInfo {
         this.companyName =new SimpleStringProperty(companyName);
         this.updateTime = new SimpleStringProperty(updateTime);
     }
+    public AssetInfo(String assetName, String quantity, SimpleStringProperty companyName, String updateTime) {
+        this.assetName = new SimpleStringProperty(assetName);
+        this.quantity = new SimpleStringProperty(quantity);
+        this.companyName = companyName;
+        this.updateTime = new SimpleStringProperty(updateTime);
+    }
+
+    public AssetInfo() {
+        assetName = null;
+        quantity = null;
+        companyName = null;
+        updateTime = null;
+    }
 
     public String getAssetName() {
         return assetName.get();
