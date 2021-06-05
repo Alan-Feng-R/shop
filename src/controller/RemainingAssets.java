@@ -1,6 +1,7 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
+import dao.impl.AssetInfoDaoImpl;
 import dao.impl.CompanyDaoImpl;
 import dao.impl.UserDaoImpl;
 import domain.AssetInfo;
@@ -50,7 +51,7 @@ public class RemainingAssets implements Initializable {
         credit.setText(String.valueOf(company.getCredit()));
         companyName.setText(user.getCompanyName());
 
-          List<AssetInfo> asset = new AssetDaoImpl().findAssetByCompany(user.getCompanyName());
+          List<AssetInfo> asset = new AssetInfoDaoImpl().findAssetByCompany(user.getCompanyName());
         assetCol.setCellValueFactory(new PropertyValueFactory<>("assetName"));
         RemainCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         updateCol.setCellValueFactory(new PropertyValueFactory<>("updateTime"));

@@ -72,7 +72,7 @@ public class addUser implements Initializable {
                     return;
                 }
             }
-            User user = new User(null, username.getText(), password.getText(), String.valueOf(value));
+            User user = new User( username.getText(), password.getText(), User.USER_TYPE,String.valueOf(value));
             new UserDaoImpl().save(user);
             alert("SUCCESS", "added Successfully!", null, Alert.AlertType.INFORMATION);
         }
@@ -113,7 +113,11 @@ public class addUser implements Initializable {
             while ((lineTxt = br.readLine()) != null) {
                 try {
                     String[] split = lineTxt.split(",");
-                    User user = new User(null, split[0], split[1], String.valueOf(value));
+                    if (split.length>2){
+                        alert("ERROR", "The text format is wrong! please re-enter!", null, Alert.AlertType.ERROR);
+                        return;
+                    }
+                    User user = new User(split[0],split[1],User.USER_TYPE, String.valueOf(value));
                     List<User> list = new UserDaoImpl().findAll();
                     for (User user1 : list) {
                         if (user1.getUsername().equals(user.getUsername())) {
@@ -121,7 +125,12 @@ public class addUser implements Initializable {
                             return;
                         }
                     }
-                    new UserDaoImpl().save(user);
+                    try {
+                        new UserDaoImpl().save(user);
+                    } catch (Exception e) {
+                        alert("ERROR", "The text format is wrong!", null, Alert.AlertType.ERROR);
+                        return;
+                    }
                 } catch (Exception e) {
                     alert("ERROR", "The text format is wrong! Please standardize the format!", null, Alert.AlertType.ERROR);
                     return;

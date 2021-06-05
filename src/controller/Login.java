@@ -1,9 +1,7 @@
 package controller;
 
 
-import dao.impl.AdministratorDaoImpl;
 import dao.impl.UserDaoImpl;
-import domain.Administrator;
 import domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +41,11 @@ public class Login {
     }
     public void login() throws IOException {
         User user = new UserDaoImpl().findUser(username.getText(), password.getText());
-        if (user != null) {
+        if (user==null){
+            alert("ERROR", "The username or password is wrong, please re-enter!", null, Alert.AlertType.ERROR);
+            return;
+        }
+        if (user.getType() == User.USER_TYPE) {
             Stage primaryStage = (Stage) confirm.getScene().getWindow();
             primaryStage.close();
             viewModel.setTargetData();
@@ -53,8 +55,7 @@ public class Login {
             dh.setScene(scene);
             dh.show();//打开新的窗口
         }
-        Administrator administrator = new AdministratorDaoImpl().findOne(username.getText(), password.getText());
-        if (administrator!=null){
+        if (user.getType() == User.ADMIN_TYPE){
             Stage primaryStage = (Stage) confirm.getScene().getWindow();
             primaryStage.close();
             Parent root = FXMLLoader.load(getClass().getResource("../view/admin.fxml"));
@@ -64,9 +65,6 @@ public class Login {
             dh.show();//打开新的窗口
         }
 
-        if (user==null&&administrator==null){
-            alert("ERROR", "The username or password is wrong, please re-enter!", null, Alert.AlertType.ERROR);
-        }
 
     }
 

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,11 +21,11 @@ public class Forget {
     @FXML
     public TextField companyName;
     @FXML
-    public TextField password;
-    @FXML
-    public TextField cpassword;
-    @FXML
     public Button button;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private PasswordField cpassword;
 
     /**
      * 弹框

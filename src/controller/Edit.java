@@ -1,6 +1,6 @@
 package controller;
 
-import dao.impl.AssetDaoImpl;
+import dao.impl.AssetInfoDaoImpl;
 import dao.impl.CompanyDaoImpl;
 import domain.AssetInfo;
 import domain.Company;
@@ -61,7 +61,7 @@ public class Edit implements Initializable {
                 Object value = companyList.getValue();
                 Company company = new CompanyDaoImpl().findByName((String) value);
                 credit.setText(String.valueOf(company.getCredit()));
-                List<AssetInfo> assetList1 = new AssetDaoImpl().findAssetByCompany(company.getCompanyName());
+                List<AssetInfo> assetList1 = new AssetInfoDaoImpl().findAssetByCompany(company.getCompanyName());
                 ObservableList<String> data1 = FXCollections.observableArrayList();
                 for (AssetInfo assetInfo : assetList1) {
                     data1.add(assetInfo.getAssetName());
@@ -77,7 +77,7 @@ public class Edit implements Initializable {
                     @Override
                     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                         Object value1 = assetList.getValue();
-                        AssetInfo asset = new AssetDaoImpl().findAssetByNameAndCompany((String) value1, (String) value);
+                        AssetInfo asset = new AssetInfoDaoImpl().findAssetByNameAndCompany((String) value1, (String) value);
                         if (asset!=null){
                             quantity.setText(asset.getQuantity());
                         }
@@ -109,7 +109,7 @@ public class Edit implements Initializable {
             if (text1.equals(credit.getText())){
                 alert("ERROR", "Please modify the value!", null, Alert.AlertType.ERROR);
             }
-            new AssetDaoImpl().updateQuantity((String)value,(String)value1,text1);
+            new AssetInfoDaoImpl().updateQuantity((String)value,(String)value1,text1);
             alert("SUCCESS", "Successfully modified!", null, Alert.AlertType.INFORMATION);
             quantity.setText(text1);
             changeQuantity.clear();
@@ -122,7 +122,7 @@ public class Edit implements Initializable {
                 alert("ERROR", "Please modify the value!", null, Alert.AlertType.ERROR);
             }
             new CompanyDaoImpl().updateCredit((String)value,text);
-            new AssetDaoImpl().updateQuantity((String)value,(String)value1,text1);
+            new AssetInfoDaoImpl().updateQuantity((String)value,(String)value1,text1);
             alert("SUCCESS", "Successfully modified!", null, Alert.AlertType.INFORMATION);
             credit.setText(text);
             quantity.setText(text1);

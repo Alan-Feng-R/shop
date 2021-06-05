@@ -1,6 +1,7 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
+import dao.impl.AssetInfoDaoImpl;
 import dao.impl.CompanyDaoImpl;
 import dao.impl.UserDaoImpl;
 import domain.AssetInfo;
@@ -69,11 +70,11 @@ public class buy implements Initializable {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage primaryStage = (Stage) back.getScene().getWindow();
         primaryStage.close();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/detail.fxml"));
+       /* Parent root = FXMLLoader.load(getClass().getResource("../view/detail.fxml"));
         Stage dh = new Stage();//新建Stage
         Scene scene = new Scene(root);
         dh.setScene(scene);
-        dh.show();//打开新的窗口
+        dh.show();//打开新的窗口*/
     }
 
     public void buy(ActionEvent actionEvent) throws IOException {
@@ -96,17 +97,28 @@ public class buy implements Initializable {
             alert("ERROR", "Insufficient balance! please enter again!", null, Alert.AlertType.ERROR);
             return;
         }
+        int quantity1=Integer.parseInt(viewModel.getName2())-Integer.parseInt(text);
+
+        //定义好需要用的对象
         User user = new UserDaoImpl().findByUserName(viewModel.getName());
         Company company = new CompanyDaoImpl().findByName(user.getCompanyName());
+        //修改公司余额
         double d=Double.parseDouble(credit.getText())-(Double.parseDouble(text)*Double.parseDouble(viewModel.getName1()));
         new CompanyDaoImpl().updateCredit(company.getCompanyName(),String.valueOf(d));
-        AssetInfo asset = new AssetDaoImpl().findAssetByNameAndCompany(assetName.getText(), company.getCompanyName());
+        //增加买的数量
+        AssetInfo asset = new AssetInfoDaoImpl().findAssetByNameAndCompany(assetName.getText(), company.getCompanyName());
         int quantity=Integer.parseInt(asset.getQuantity())+Integer.parseInt(text);
-        new AssetDaoImpl().updateQuantity(company.getCompanyName(), viewModel1.getName(),String.valueOf(quantity));
+        new AssetInfoDaoImpl().updateQuantity(company.getCompanyName(), viewModel1.getName(),String.valueOf(quantity));
+
+        //修改相关数量
         AssetSelling assetSelling = viewModel.getAssetSelling();
-        int quantity1=Integer.parseInt(viewModel.getName2())-Integer.parseInt(text);
-        new AssetDaoImpl().updateSellingQuantity(assetSelling.getCompanyName(),assetSelling.getAssetName(),String.valueOf(quantity1));
+        new AssetInfoDaoImpl().updateSellingQuantity(assetSelling.getCompanyName(),assetSelling.getAssetName(),String.valueOf(quantity1));
         new AssetDaoImpl().insertNewAssetSelling(assetSelling.getCompanyName(),assetSelling.getAssetName(),viewModel.getName(),"done",viewModel.getName1(),text);
+        assetSelling.setRemainNum(String.valueOf(Integer.parseInt(assetSelling.getRemainNum())-Integer.parseInt(text)));
+        double price = Double.parseDouble(assetSelling.getSellingPrice())-0.50;
+        assetSelling.setSellingPrice(String.valueOf(price));
+        new AssetDaoImpl().updateAssetSellingQuantity(assetSelling);
+
         alert("SUCCESS", "The purchase is successful!", null, Alert.AlertType.INFORMATION);
         Stage primaryStage = (Stage) back.getScene().getWindow();
         primaryStage.close();

@@ -15,4 +15,10 @@ public interface UserDao {
     List<User> findAll();
 
     void save(User user);
+
+    void saveAdmin(User user);
+
+    List<User> findAllAdmin();
+
+    User findOne(String username, String password);
 }

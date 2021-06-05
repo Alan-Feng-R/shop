@@ -19,7 +19,7 @@ public class Item {
     @FXML
     private Label sellPriceLabel;
 
-   SourceDataviewModel1 viewModel1 = SourceDataviewModel1.getInstance();
+    private SourceDataviewModel1 viewModel1 = SourceDataviewModel1.getInstance();
 
 
     public void setData(MarketAsset marketAsset){

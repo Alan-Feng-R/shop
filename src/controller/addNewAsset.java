@@ -1,12 +1,8 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
-import dao.impl.CompanyDaoImpl;
-import domain.AssetInfo;
-import domain.Company;
+import dao.impl.AssetInfoDaoImpl;
 import domain.MarketAsset;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,33 +35,21 @@ public class addNewAsset implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<Company> companylist = new CompanyDaoImpl().findAll();
-        ObservableList<String> data = FXCollections.observableArrayList();
-        for (Company company : companylist) {
-            data.add(company.getCompanyName());
-        }
-        for (String datum : data) {
-            companyList.getItems().add(datum);
-        }
     }
 
     public void add(ActionEvent actionEvent) {
-        if (companyList.getValue()==null){
-            alert("ERROR", "The company cannot be empty! Please select a company!",null, Alert.AlertType.ERROR);
-            return;
-        }
-        List<AssetInfo> list = new AssetDaoImpl().findAllAssetName();
+        List<String> list = new AssetInfoDaoImpl().findAssetType();
         if (!assetName.getText().equals(cassetName.getText())){
             alert("ERROR", "The two names are different, please re-enter!", null, Alert.AlertType.ERROR);
             return;
         }
-        for (AssetInfo assetInfo : list) {
-            if (assetInfo.getAssetName().equals(assetName.getText())){
+        for (String s : list) {
+            if (s.equals(assetName.getText())){
                 alert("ERROR", "The product already exists, please re-enter!", null, Alert.AlertType.ERROR);
                 return;
             }
         }
-        new AssetDaoImpl().insertNewAsset(assetName.getText(),(String)companyList.getValue());
+        new AssetInfoDaoImpl().insertNewAssetType(assetName.getText());
         MarketAsset marketAsset = new AssetDaoImpl().findAssetByName(assetName.getText());
         if (marketAsset==null){
             new AssetDaoImpl().insertNewMarketasset(assetName.getText());

@@ -1,8 +1,10 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
+import dao.impl.UserDaoImpl;
 import domain.AssetSelling;
 import domain.MarketAsset;
+import domain.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -77,8 +79,8 @@ public class Detail implements Initializable {
         sellpriceCol.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
         sellquantityCol.setCellValueFactory(new PropertyValueFactory<>("RemainNum"));
         assetName.setText(viewModel1.getName());
-
-        List<AssetSelling> list = new AssetDaoImpl().findAllSellingAssetName(viewModel1.getName());
+        User user = new UserDaoImpl().findByUserName(viewModel.getName());
+        List<AssetSelling> list = new AssetDaoImpl().findAllBuyingAssetNameAndCompanyName(viewModel1.getName(), user.getCompanyName());
         ObservableList<AssetSelling> data = FXCollections.observableArrayList();
         for (AssetSelling assetSelling : list) {
             data.add(assetSelling);
@@ -86,7 +88,7 @@ public class Detail implements Initializable {
         tableviewSell.setItems(data);
 
         ObservableList<AssetSelling> data1 = FXCollections.observableArrayList();
-        List<AssetSelling> list1 = new AssetDaoImpl().findAllSellingAssetName(viewModel1.getName());
+        List<AssetSelling> list1 = new AssetDaoImpl().findAllSellingAssetNameAndCompanyName(viewModel1.getName(), user.getCompanyName());
         buypriceCol.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
         buyquantity.setCellValueFactory(new PropertyValueFactory<>("RemainNum"));
         for (AssetSelling assetSelling : list1) {

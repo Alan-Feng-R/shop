@@ -40,9 +40,9 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void save(Company company) {
-        String sql = "insert into company(company_name) values (?)";
-        executeUpdate(sql, company.getCompanyName());
+    public void save(Company organisation) {
+        String sql = "insert into organisation_info(organisation_name) values (?)";
+        executeUpdate(sql, organisation.getCompanyName());
     }
 
     @Override
@@ -56,16 +56,16 @@ public class CompanyDaoImpl implements CompanyDao {
             conn = JdbcUtil.getConn();
             // 3.创建语句
             st = conn.createStatement();
-            String sql = "select * from company ";
+            String sql = "select * from organisation_info ";
             // 4.执行语句
             rs = st.executeQuery(sql);
             // 创建一个集合
             List<Company> list = new ArrayList<>();
             while (rs.next()) {
-                Company company = new Company(
-                        rs.getInt("company_id"), rs.getString("company_name"), rs.getInt("credit")
+                Company organisation = new Company(
+                        rs.getInt("organisation_id"), rs.getString("organisation_name"), rs.getInt("credit")
                 );
-                list.add(company);
+                list.add(organisation);
             }
             return list;
         } catch (Exception e) {
@@ -86,13 +86,13 @@ public class CompanyDaoImpl implements CompanyDao {
             // 2.连接数据库
             conn = JdbcUtil.getConn();
             // 3.创建语句
-            String sql = "SELECT * FROM `company` where company_name=?";
+            String sql = "SELECT * FROM `organisation_info` where organisation_name=?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, name);
             // 4.执行语句
             rs = ps.executeQuery();
             if (rs.next()) {
-                return new Company(rs.getInt("company_id"),rs.getString("company_name"),rs.getInt("credit"));
+                return new Company(rs.getInt("organisation_id"),rs.getString("organisation_name"),rs.getInt("credit"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,15 +103,15 @@ public class CompanyDaoImpl implements CompanyDao {
         return null;
     }
 
-    public void updateCredit(String company, String credit){
-        String sql = "update company set credit=? where company_name=?";
-        executeUpdate(sql,credit,company);
+    public void updateCredit(String organisation, String credit){
+        String sql = "update organisation_info set credit=? where organisation_name=?";
+        executeUpdate(sql,credit,organisation);
     }
 
     @Override
-    public void insertCompany(String companyName) {
-        String sql = "insert into company(company_name) values (?)";
-        executeUpdate(sql,companyName);
+    public void insertCompany(String organisationName) {
+        String sql = "insert into organisation_info(organisation_name) values (?)";
+        executeUpdate(sql,organisationName);
     }
 }
 

@@ -1,27 +1,31 @@
 package domain;
 
 public class User {
-    private Integer uid;
     private String username;
     private String password;
+    private Integer type;
     private String companyName;
+
+    public static final int ADMIN_TYPE=1;
+    public static final int USER_TYPE=0;
+
 
     public User() {
     }
 
-    public User(Integer uid, String username, String password, String companyName) {
-        this.uid = uid;
+    public User(String username, String password, Integer type, String companyName) {
         this.username = username;
         this.password = password;
+        this.type = type;
         this.companyName = companyName;
     }
 
-    public Integer getUid() {
-        return uid;
+    public Integer getType() {
+        return type;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public String getCompanyName() {
@@ -48,13 +52,5 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "uid=" + uid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", companyName='" + companyName + '\'' +
-                '}';
-    }
+
 }

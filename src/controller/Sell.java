@@ -1,6 +1,7 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
+import dao.impl.AssetInfoDaoImpl;
 import dao.impl.CompanyDaoImpl;
 import dao.impl.UserDaoImpl;
 import domain.AssetInfo;
@@ -8,10 +9,7 @@ import domain.Company;
 import domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -78,7 +76,7 @@ public class Sell implements Initializable {
             alert("ERROR", "The input quantity is wrong! please enter again!", null, Alert.AlertType.ERROR);
             return;
         }
-        AssetInfo assetInfo=new AssetDaoImpl().findAssetByCompanyAndAssetName(company.getCompanyName(),viewModel1.getName());
+        AssetInfo assetInfo=new AssetInfoDaoImpl().findAssetByCompanyAndAssetName(company.getCompanyName(),viewModel1.getName());
         List<Integer> list1 = new AssetDaoImpl().findAllByAssetName(assetInfo.getAssetName(),user.getCompanyName());
         int num=0;
         for (Integer integer : list1) {
@@ -88,6 +86,15 @@ public class Sell implements Initializable {
             alert("ERROR", "The input quantity is wrong!", null, Alert.AlertType.ERROR);
             return;
         }
+      /*  AssetSelling assetSelling = viewModel.getAssetSelling();
+        if (Integer.parseInt(sellPriceText)==Integer.parseInt(assetSelling.getSellingPrice())){
+            if (Integer.parseInt(quantityText)>Integer.parseInt(assetSelling.getRemainNum())){
+                alert("ERROR", "Too many！", null, Alert.AlertType.ERROR);
+                return;
+            }else if(Integer.parseInt(quantityText)==Integer.parseInt(assetSelling.getRemainNum())){
+
+            }
+        }*/
         new AssetDaoImpl().insertNewAssetSelling(company.getCompanyName(), viewModel1.getName(), user.getUsername(),"selling",sellPriceText,quantityText);
         alert("SUCCESS", "The sale is successful!", null, Alert.AlertType.INFORMATION);
         Stage primaryStage = (Stage) back.getScene().getWindow();
@@ -103,10 +110,10 @@ public class Sell implements Initializable {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage primaryStage = (Stage) back.getScene().getWindow();
         primaryStage.close();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/detail.fxml"));
-        Stage dh = new Stage();//新建Stage
-        Scene scene = new Scene(root);
-        dh.setScene(scene);
-        dh.show();//打开新的窗口
+//        Parent root = FXMLLoader.load(getClass().getResource("../view/detail.fxml"));
+//        Stage dh = new Stage();//新建Stage
+//        Scene scene = new Scene(root);
+//        dh.setScene(scene);
+//        dh.show();//打开新的窗口
     }
 }

@@ -1,18 +1,24 @@
 package controller;
 
 import dao.impl.AssetDaoImpl;
+import dao.impl.AssetInfoDaoImpl;
 import dao.impl.UserDaoImpl;
 import domain.AssetInfo;
 import domain.MarketAsset;
 import domain.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import viewModel.TargetDataViewModel;
 
 import java.io.IOException;
@@ -26,6 +32,8 @@ public class Cartlist implements Initializable {
     @FXML
     public Pane pane;
     @FXML
+    public Button exit;
+    @FXML
     private GridPane grid;
 
 
@@ -34,7 +42,7 @@ public class Cartlist implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         User user = new UserDaoImpl().findByUserName(viewModel.getName());
-        List<AssetInfo> asset = new AssetDaoImpl().findAssetByCompany(user.getCompanyName());
+        List<AssetInfo> asset = new AssetInfoDaoImpl().findAssetByCompany(user.getCompanyName());
         int column = 0;
         int row = 0;
         try {
@@ -65,6 +73,16 @@ public class Cartlist implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+    public void exit(ActionEvent actionEvent) throws IOException {
+        Stage primaryStage = (Stage) exit.getScene().getWindow();
+        primaryStage.close();
+        Parent root = FXMLLoader.load(getClass().getResource("../view/login.fxml"));
+        Stage dh = new Stage();//新建Stage
+        Scene scene = new Scene(root);
+        dh.setScene(scene);
+        dh.show();//打开新的窗口
     }
 }
 
