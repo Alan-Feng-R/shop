@@ -9,8 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="930.0" prefWidth="1080.0" style="-fx-background-color: #6ac5ff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Detail">
+<AnchorPane prefHeight="874.0" prefWidth="1086.0" style="-fx-background-color: #B9D7EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Detail">
    <children>
       <HBox layoutY="112.0" prefHeight="183.0" prefWidth="1081.0">
          <children>
@@ -24,7 +23,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="80.0" layoutY="72.0" text="Xeon Gold 52182" textFill="#6ac5ff">
+                  <Label fx:id="assetName" layoutX="80.0" layoutY="72.0" text="Xeon Gold 52182" textFill="#6ac5ff">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -33,7 +32,7 @@
                </children>
             </Pane>
             <Pane prefHeight="183.0" prefWidth="214.0" />
-            <TextArea prefHeight="183.0" prefWidth="548.0" promptText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis,arcu id pretium elementum, orci risus aliquet est, ac convallis est arcu anibh. Vivamus a nibh feugiat, aliquet metus at, vestibulum justo. Nullamac velit orci.lnteger at dolor eu arcu molestie malesuada.Quisquetempor libero vitae pharetra facilisis. Donec quis lorem eu risus egestasaliquam. Morbi quis justo sed elit cursus ultrices non sit amet est.Pellentesque sit amet scelerisque lacus. Ut et finibus mi. Nullam felis" scrollLeft="5.0" scrollTop="5.0">
+            <TextArea prefHeight="183.0" prefWidth="548.0" scrollLeft="5.0" scrollTop="5.0" style="-fx-wrap-text: wrap;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#10;Nam iaculis,arcu id pretium elementum, orci risus aliquet est,&#10;ac convallis est arcu anibh. Vivamus a nibh feugiat, aliquet metus at,&#10;vestibulum justo. Nullamac velit orci.lnteger at dolor eu arcu molestie malesuada.&#10;Quisquetempor libero vitae pharetra facilisis. &#10;Donec quis lorem eu risus egestasaliquam.&#10;Morbi quis justo sed elit cursus ultrices non sit amet est.Pellentesque sit amet scelerisque lacus. Ut et finibus mi. Nullam felis">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -47,10 +46,10 @@
                   <Insets left="100.0" />
                </HBox.margin>
                <children>
-                  <TableView layoutX="37.0" layoutY="38.0" prefHeight="138.0" prefWidth="316.0">
+                  <TableView fx:id="tableviewSell" layoutX="37.0" layoutY="38.0" prefHeight="138.0" prefWidth="316.0">
                     <columns>
-                      <TableColumn prefWidth="215.0" text="Price (credit Points / hour)" />
-                      <TableColumn prefWidth="100.0" text="Quantity" />
+                      <TableColumn fx:id="sellpriceCol" prefWidth="215.0" text="Price (credit Points / hour)" />
+                      <TableColumn fx:id="sellquantityCol" prefWidth="100.0" text="Quantity" />
                     </columns>
                   </TableView>
                   <Label layoutX="81.0" layoutY="10.0" text="Purchase request price">
@@ -58,7 +57,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="126.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" text="SELL" />
+                  <Button fx:id="sellBtn" layoutX="127.0" layoutY="199.0" mnemonicParsing="false" onAction="#sell" prefHeight="30.0" prefWidth="137.0" style="-fx-background-color: white;" text="SELL" />
                </children>
             </Pane>
             <Pane prefHeight="300.0" prefWidth="531.0">
@@ -66,30 +65,36 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <TableView layoutX="149.0" layoutY="33.0" prefHeight="138.0" prefWidth="340.0">
+                  <TableView fx:id="tableviewBuy" layoutX="150.0" layoutY="26.0" prefHeight="138.0" prefWidth="340.0">
                      <columns>
-                        <TableColumn prefWidth="215.0" text="Price (credit Points / hour)" />
-                        <TableColumn prefWidth="124.0" text="Quantity" />
+                        <TableColumn fx:id="buypriceCol" prefWidth="215.0" text="Price (credit Points / hour)" />
+                        <TableColumn fx:id="buyquantity" prefWidth="124.0" text="Quantity" />
                      </columns>
                   </TableView>
-                  <Label layoutX="207.0" layoutY="-1.0" text="Purchase request price">
+                  <Label layoutX="207.0" layoutY="2.0" text="Purchase request price">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Button layoutX="232.0" layoutY="186.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="156.0" text="BUY" />
+                  <Button fx:id="buy" layoutX="232.0" layoutY="186.0" mnemonicParsing="false" onAction="#buy" prefHeight="30.0" prefWidth="156.0" style="-fx-background-color: #CEF4AD;" text="BUY" />
                </children>
             </Pane>
          </children>
       </HBox>
-      <LineChart layoutX="12.0" layoutY="570.0" prefHeight="318.0" prefWidth="1064.0">
+      <LineChart fx:id="linechart" layoutX="71.0" layoutY="553.0" prefHeight="266.0" prefWidth="950.0" style="-fx-background-color: white;">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis side="BOTTOM" fx:id="x" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis fx:id="y" side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button layoutX="902.0" layoutY="879.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="back" />
+      <Pane layoutY="6.0" prefHeight="54.0" prefWidth="1086.0" style="-fx-background-color: #F5F4F6;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #F5F4F6;" text="Electronic asset trading system" />
+            <Button fx:id="MyCompany" layoutX="919.0" layoutY="15.0" mnemonicParsing="false" onAction="#myCount" prefHeight="30.0" prefWidth="97.0" text="mycount" />
+            <Button fx:id="backBtn" layoutX="763.0" layoutY="15.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="120.0" text="back" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
