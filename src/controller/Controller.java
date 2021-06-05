@@ -51,4 +51,16 @@ public class Controller implements Initializable {
         content.getChildren().setAll(fxml);
 
     }
+    public void add(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("../view/addnewasset.fxml"));
+        content.getChildren().removeAll();
+        content.getChildren().setAll(fxml);
+
+    }
+    public void addUser(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("../view/addUser.fxml"));
+        content.getChildren().removeAll();
+        content.getChildren().setAll(fxml);
+
+    }
 }
