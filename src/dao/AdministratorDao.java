@@ -1,7 +1,6 @@
 package dao;
 
 import domain.Administrator;
-import domain.Company;
 
 import java.util.List;
 

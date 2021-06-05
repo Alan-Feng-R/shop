@@ -1,6 +1,5 @@
 package controller;
 
-import dao.CompanyDao;
 import dao.impl.AssetDaoImpl;
 import dao.impl.CompanyDaoImpl;
 import domain.AssetInfo;
