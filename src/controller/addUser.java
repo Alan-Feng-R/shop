@@ -72,7 +72,7 @@ public class addUser implements Initializable {
                     return;
                 }
             }
-            User user = new User( username.getText(), password.getText(), User.USER_TYPE,String.valueOf(value));
+            User user = new User(username.getText(), password.getText(), User.USER_TYPE, String.valueOf(value));
             new UserDaoImpl().save(user);
             alert("SUCCESS", "added Successfully!", null, Alert.AlertType.INFORMATION);
         }
@@ -91,8 +91,8 @@ public class addUser implements Initializable {
     }
 
     public void upload(ActionEvent actionEvent) throws IOException {
-        if (companyList.getValue()==null){
-            alert("ERROR", "The company cannot be empty! Please select a company!",null, Alert.AlertType.ERROR);
+        if (companyList.getValue() == null) {
+            alert("ERROR", "The company cannot be empty! Please select a company!", null, Alert.AlertType.ERROR);
             return;
         }
         final FileChooser fileChooser = new FileChooser();
@@ -113,11 +113,11 @@ public class addUser implements Initializable {
             while ((lineTxt = br.readLine()) != null) {
                 try {
                     String[] split = lineTxt.split(",");
-                    if (split.length>2){
+                    if (split.length > 2) {
                         alert("ERROR", "The text format is wrong! please re-enter!", null, Alert.AlertType.ERROR);
                         return;
                     }
-                    User user = new User(split[0],split[1],User.USER_TYPE, String.valueOf(value));
+                    User user = new User(split[0], split[1], User.USER_TYPE, String.valueOf(value));
                     List<User> list = new UserDaoImpl().findAll();
                     for (User user1 : list) {
                         if (user1.getUsername().equals(user.getUsername())) {

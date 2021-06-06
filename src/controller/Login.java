@@ -25,23 +25,24 @@ public class Login {
 
     private SourceDataViewModel viewModel = SourceDataViewModel.getInstance();
 
-    public void initialize(){
+    public void initialize() {
         viewModel.nameProperty().bindBidirectional(username.textProperty());
     }
 
     /**
      * 弹框
      */
-    public void alert(String title, String content, String header, Alert.AlertType type){
+    public void alert(String title, String content, String header, Alert.AlertType type) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
     }
+
     public void login() throws IOException {
         User user = new UserDaoImpl().findUser(username.getText(), password.getText());
-        if (user==null){
+        if (user == null) {
             alert("ERROR", "The username or password is wrong, please re-enter!", null, Alert.AlertType.ERROR);
             return;
         }
@@ -55,7 +56,7 @@ public class Login {
             dh.setScene(scene);
             dh.show();//打开新的窗口
         }
-        if (user.getType() == User.ADMIN_TYPE){
+        if (user.getType() == User.ADMIN_TYPE) {
             Stage primaryStage = (Stage) confirm.getScene().getWindow();
             primaryStage.close();
             Parent root = FXMLLoader.load(getClass().getResource("../view/admin.fxml"));
