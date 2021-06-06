@@ -8,47 +8,59 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Mycount">
+<AnchorPane prefHeight="600.0" prefWidth="1080.0" style="-fx-background-color: #B9D7EA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Mycount">
    <children>
-      <Pane layoutX="44.0" layoutY="86.0" prefHeight="60.0" prefWidth="1011.0">
+      <Pane layoutX="44.0" layoutY="86.0" prefHeight="60.0" prefWidth="1011.0" style="-fx-background-color: #ABC1CD;">
          <children>
-            <Label layoutX="50.0" layoutY="20.0" text="company A">
+            <Label fx:id="companyText" layoutX="42.0" layoutY="7.0" prefHeight="38.0" prefWidth="172.0" style="-fx-background-color: #ABC1CD;" text=" " textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>
       </Pane>
       <HBox layoutX="78.0" layoutY="244.0" prefHeight="207.0" prefWidth="929.0">
          <children>
-            <Pane prefHeight="207.0" prefWidth="274.0" style="-fx-background-color: red;">
+            <Pane fx:id="RemainPane" onMouseClicked="#RemainAsset" prefHeight="207.0" prefWidth="274.0" style="-fx-background-color: FAD319;">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <Label layoutX="50.0" layoutY="94.0" prefHeight="20.0" prefWidth="172.0" text="Remaining assets">
+                  <Label layoutX="32.0" layoutY="88.0" prefHeight="32.0" prefWidth="228.0" text="Remaining assets">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
             <Pane prefHeight="207.0" prefWidth="379.0" />
-            <Pane prefHeight="207.0" prefWidth="268.0" style="-fx-background-color: red;">
+            <Pane fx:id="cancel" onMouseClicked="#cancel" prefHeight="207.0" prefWidth="268.0" style="-fx-background-color: #EB0013;">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <Label layoutX="127.0" layoutY="94.0" text="Label">
+                  <Label layoutX="54.0" layoutY="88.0" text="Cancel assets">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
          </children>
       </HBox>
-      <Button layoutX="513.0" layoutY="505.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="143.0" text="back" />
+      <Button layoutX="513.0" layoutY="502.0" mnemonicParsing="false" onAction="#back" prefHeight="52.0" prefWidth="172.0" style="-fx-background-color: white;" text="back">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Pane prefHeight="60.0" prefWidth="1080.0">
+         <children>
+            <Label layoutX="25.0" layoutY="20.0" text="Electronic asset trading system">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="881.0" layoutY="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0" text="mycount" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

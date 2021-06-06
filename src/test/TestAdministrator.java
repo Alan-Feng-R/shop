@@ -16,9 +16,9 @@ public class TestAdministrator {
     public void TestFindAdministratorWithMock(){
         User administrator=new User();
         UserDao userDao = EasyMock.createMock(UserDao.class);
-        EasyMock.expect(userDao.findOne("001","123")).andReturn(administrator);
+        EasyMock.expect(userDao.findOne("101","123")).andReturn(administrator);
         EasyMock.replay(userDao);
-        User administrator1 = userDao.findOne("001", "123");
+        User administrator1 = userDao.findOne("101", "123");
         assertNotNull(administrator1);
         assertEquals(administrator,administrator1);
         EasyMock.verify(userDao);
@@ -27,7 +27,7 @@ public class TestAdministrator {
     public void TestFindAllAdministratorWithMock(){
         UserDao userDao = EasyMock.createMock(UserDao.class);
         List<User> list=new ArrayList<>();
-        EasyMock.expect(userDao.findAll()).andReturn(list);
+        EasyMock.expect(userDao.findAllAdmin()).andReturn(list);
         EasyMock.replay(userDao);
         List<User> list1 = userDao.findAllAdmin();
         assertNotNull(list1);

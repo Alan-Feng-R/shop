@@ -30,7 +30,7 @@ public class Forget {
     /**
      * 弹框
      */
-    public void alert(String title, String content, String header, Alert.AlertType type) {
+    public void alert(String title, String content, String header, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -45,17 +45,17 @@ public class Forget {
         String pwd = password.getText();
         String cpwd = cpassword.getText();
 
-        User user = new UserDaoImpl().findByUserName(usernameText);
-        if (user == null) {
+        User user=new UserDaoImpl().findByUserName(usernameText);
+        if (user==null){
             alert("ERROR", "The user does not exist, please re-enter!", null, Alert.AlertType.ERROR);
-        } else if (!companyNameText.equals(user.getCompanyName())) {
+        }else if (!companyNameText.equals(user.getCompanyName())){
             alert("ERROR", "The company of the user name is wrong, please confirm and input!", null, Alert.AlertType.ERROR);
-        } else if (pwd.isEmpty()) {
+        }else if (pwd.isEmpty()){
             alert("ERROR", "Password is empty, please re-enter", null, Alert.AlertType.ERROR);
-        } else if (!pwd.equals(cpwd)) {
+        }else if (!pwd.equals(cpwd)){
             alert("ERROR", "The two passwords are inconsistent, please re-enter!", null, Alert.AlertType.ERROR);
-        } else {
-            new UserDaoImpl().updateUser(usernameText, pwd);
+        }else{
+            new UserDaoImpl().updateUser(usernameText,pwd);
             alert("SUCCESS", "Successfully modified!", null, Alert.AlertType.INFORMATION);
             Stage primaryStage = (Stage) button.getScene().getWindow();
             primaryStage.close();

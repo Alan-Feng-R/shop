@@ -5,28 +5,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="439.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Edit">
+<Pane prefHeight="439.0" prefWidth="800.0" style="-fx-background-color: #BBEFDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Edit">
    <children>
-      <Label layoutX="51.0" layoutY="36.0" text="Administration">
+      <Label prefHeight="50.0" prefWidth="400.0" style="-fx-opacity: 0.6; -fx-background-color: gray;" text="           Administration">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="595.0" layoutY="36.0" text="Edit asset">
+      <Label layoutX="400.0" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #EA061F;" text="                      Edit asset">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="companyList" layoutX="297.0" layoutY="90.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="companyList" layoutX="297.0" layoutY="90.0" prefWidth="150.0" style="-fx-background-color: white;" />
       <Label layoutX="531.0" layoutY="151.0" text="change to value" />
       <Label layoutX="361.0" layoutY="151.0" text="create value" />
       <Label layoutX="90.0" layoutY="183.0" text="Credit points" />
       <Label fx:id="credit" layoutX="381.0" layoutY="193.0" text=" " />
       <TextField fx:id="changeCredit" layoutX="526.0" layoutY="188.0" prefHeight="30.0" prefWidth="124.0" />
       <Label layoutX="85.0" layoutY="246.0" text="Asset Number" />
-      <ChoiceBox fx:id="assetList" layoutX="206.0" layoutY="241.0" prefHeight="30.0" prefWidth="143.0" />
+      <ChoiceBox fx:id="assetList" layoutX="206.0" layoutY="241.0" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: white;" />
       <Label fx:id="quantity" layoutX="385.0" layoutY="246.0" text=" " />
       <TextField fx:id="changeQuantity" layoutX="524.0" layoutY="241.0" prefHeight="30.0" prefWidth="124.0" />
-      <Button layoutX="327.0" layoutY="319.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" onAction="#doChange" text="confirm change" />
+      <Button layoutX="327.0" layoutY="306.0" mnemonicParsing="false" onAction="#doChange" prefHeight="43.0" prefWidth="176.0" style="-fx-background-color: #C8FF94; -fx-border-radius: 15px;" text="confirm change" />
    </children>
 </Pane>

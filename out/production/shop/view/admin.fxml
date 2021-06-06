@@ -9,37 +9,52 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <top>
-      <Pane prefHeight="100.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="94.0" prefWidth="1000.0" style="-fx-background-color: #3895C4;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="27.0" layoutY="30.0" text="Administration Mode">
+            <Label prefHeight="94.0" prefWidth="245.0" style="-fx-background-color: #FAA71B;" text="   Administration Mode" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <Button fx:id="exit" layoutX="874.0" layoutY="22.0" mnemonicParsing="false" onAction="#exit" prefHeight="51.0" prefWidth="112.0" style="-fx-background-color: #FAA71B;" text="Exit">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </top>
    <left>
-      <Pane prefHeight="500.0" prefWidth="246.0" style="-fx-background-color: #AAB2BD;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="505.0" prefWidth="246.0" style="-fx-background-color: #2A2426;" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutY="90.0" prefHeight="270.0" prefWidth="246.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#create" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #AAB2BD;" text="Create organization">
+                  <Button mnemonicParsing="false" onAction="#create" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #2A2426;" text="Create organization" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#invite" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #AAB2BD;" text="lnvite Administration">
+                  <Button mnemonicParsing="false" onAction="#invite" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #2A2426;" text="lnvite Administration" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#assets" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #AAB2BD;" text="Assets History">
+                  <Button mnemonicParsing="false" onAction="#assets" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #2A2426;" text="Assets History" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#edit" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #AAB2BD;" text="Edit asset">
+                  <Button mnemonicParsing="false" onAction="#edit" prefHeight="38.0" prefWidth="246.0" style="-fx-background-color: #2A2426;" text="Edit asset" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="252.0" style="-fx-background-color: #2A2426;" text="Add Asset category " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#addUser" prefHeight="30.0" prefWidth="248.0" style="-fx-background-color: #2A2426;" text="Add User" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -52,7 +67,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="content" layoutX="7.0" prefHeight="439.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0" />
+            <StackPane fx:id="content" layoutX="-5.0" prefHeight="439.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </center>

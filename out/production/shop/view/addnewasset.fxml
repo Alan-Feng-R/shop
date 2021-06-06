@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="439.0" prefWidth="800.0" style="-fx-background-color: #BBEFDC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addNewAsset">
+   <children>
+      <Label layoutX="190.0" layoutY="132.0" text="Asset category Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="238.0" layoutY="200.0" text="Confirm Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="assetName" layoutX="414.0" layoutY="129.0" />
+      <TextField fx:id="cassetName" layoutX="414.0" layoutY="197.0" />
+      <Button layoutX="301.0" layoutY="291.0" mnemonicParsing="false" onAction="#add" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: #8BFCEC;" text="Add new asset category" />
+      <Label prefHeight="40.0" prefWidth="800.0" style="-fx-background-color: gray; -fx-opacity: 0.6;" text="    Add new asset category">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

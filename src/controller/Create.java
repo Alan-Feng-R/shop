@@ -18,7 +18,7 @@ public class Create {
     /**
      * 弹框
      */
-    public void alert(String title, String content, String header, Alert.AlertType type) {
+    public void alert(String title, String content, String header, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -27,13 +27,13 @@ public class Create {
     }
 
     public void confirm(ActionEvent actionEvent) {
-        if (!cname.getText().equals(name.getText())) {
+        if (!cname.getText().equals(name.getText())){
             alert("ERROR", "Company input is inconsistent, please re-enter!", null, Alert.AlertType.ERROR);
             return;
         }
         List<Company> list = new CompanyDaoImpl().findAll();
         for (Company company : list) {
-            if (name.getText().equals(company.getCompanyName())) {
+            if (name.getText().equals(company.getCompanyName())){
                 alert("ERROR", "The company already exists, please re-enter!", null, Alert.AlertType.ERROR);
                 return;
             }
