@@ -1,7 +1,7 @@
 package test;
 
-import dao.AdministratorDao;
-import domain.Administrator;
+import dao.UserDao;
+import domain.User;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -14,24 +14,24 @@ import static org.junit.Assert.assertNotNull;
 public class TestAdministrator {
     @Test
     public void TestFindAdministratorWithMock(){
-        Administrator administrator=new Administrator();
-        AdministratorDao administratorDao = EasyMock.createMock(AdministratorDao.class);
-        EasyMock.expect(administratorDao.findOne("001","123")).andReturn(administrator);
-        EasyMock.replay(administratorDao);
-        Administrator administrator1 = administratorDao.findOne("001", "123");
+        User administrator=new User();
+        UserDao userDao = EasyMock.createMock(UserDao.class);
+        EasyMock.expect(userDao.findOne("001","123")).andReturn(administrator);
+        EasyMock.replay(userDao);
+        User administrator1 = userDao.findOne("001", "123");
         assertNotNull(administrator1);
         assertEquals(administrator,administrator1);
-        EasyMock.verify(administratorDao);
+        EasyMock.verify(userDao);
     }
     @Test
     public void TestFindAllAdministratorWithMock(){
-        AdministratorDao administratorDao = EasyMock.createMock(AdministratorDao.class);
-        List<Administrator> list=new ArrayList<>();
-        EasyMock.expect(administratorDao.findAll()).andReturn(list);
-        EasyMock.replay(administratorDao);
-        List<Administrator> list1 = administratorDao.findAll();
+        UserDao userDao = EasyMock.createMock(UserDao.class);
+        List<User> list=new ArrayList<>();
+        EasyMock.expect(userDao.findAll()).andReturn(list);
+        EasyMock.replay(userDao);
+        List<User> list1 = userDao.findAllAdmin();
         assertNotNull(list1);
         assertEquals(list,list1);
-        EasyMock.verify(administratorDao);
+        EasyMock.verify(userDao);
     }
 }

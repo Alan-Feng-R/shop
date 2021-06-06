@@ -27,6 +27,5 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="companyList" layoutX="32.0" layoutY="56.0" prefWidth="150.0" style="-fx-background-color: white;" />
    </children>
 </Pane>

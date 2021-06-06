@@ -2,6 +2,7 @@ package test;
 
 
 import dao.AssetDao;
+import dao.AssetInfoDao;
 import domain.AssetInfo;
 import domain.AssetSelling;
 import domain.MarketAsset;
@@ -57,7 +58,7 @@ public class TestAsset {
 
     @Test
     public void TestFindAssetByCompanyNameWithMock(){
-        AssetDao assetDao=EasyMock.createMock(AssetDao.class);
+        AssetInfoDao assetDao=EasyMock.createMock(AssetInfoDao.class);
         List<AssetInfo> list=new ArrayList<>();
         EasyMock.expect(assetDao.findAllAssetName()).andReturn(list);
         EasyMock.replay(assetDao);
@@ -69,7 +70,7 @@ public class TestAsset {
 
     @Test
     public void TestFindAssetByCompanyAndAssetNameWithMock(){
-        AssetDao assetDao=EasyMock.createMock(AssetDao.class);
+        AssetInfoDao assetDao=EasyMock.createMock(AssetInfoDao.class);
         AssetInfo assetInfo=new AssetInfo();
         String assetName="test1";
         String companyName="company A";

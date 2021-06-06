@@ -12,22 +12,22 @@
    <children>
       <TextField fx:id="username" layoutX="277.0" layoutY="88.0" />
        <TextField fx:id="companyName" layoutX="277.0" layoutY="144.0" />
-      <TextField fx:id="password" layoutX="277.0" layoutY="195.0" />
-      <TextField fx:id="cpassword" layoutX="277.0" layoutY="240.0" />
-      <Button fx:id="button" layoutX="262.0" layoutY="308.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #73BBE4;" text="chage passowrd" />
+      <Button fx:id="button" layoutX="262.0" layoutY="308.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #73BBE4;" text="change password" />
       <Label layoutX="169.0" layoutY="93.0" text="User Name" />
       <Label layoutX="180.0" layoutY="200.0" text="Password" />
       <Label layoutX="125.0" layoutY="245.0" text="Confirm Password" />
       <Label layoutX="185.0" layoutY="149.0" text="Company" />
-      <Pane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: blue;">
+      <Pane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #73BBE4;">
          <children>
-            <Label layoutX="222.0" layoutY="9.0" text="foget password" textFill="WHITE">
+            <Label layoutX="222.0" layoutY="9.0" text="forget password" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </Pane>
+      <PasswordField fx:id="password" layoutX="277.0" layoutY="195.0" />
+      <PasswordField fx:id="cpassword" layoutX="277.0" layoutY="240.0" />
 
    </children>
 </AnchorPane>
